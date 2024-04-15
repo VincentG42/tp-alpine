@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     version:[
-        {name: 'Pure', price: 54700},
-        { name: 'legende', price: 58500}
+        {name: 'Pure', price: 54700, power: "252hp", maxSpeed: "250", transmission: "7-speed automatic" },
+        { name: 'legende', price: 58500, power: "300hp", maxSpeed: "250", transmission: "7-speed automatic"}
     ],
     couleur:[
 

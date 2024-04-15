@@ -1,11 +1,11 @@
 
 import './App.css';
-import Configurator from '../Configurator/Configurator';
+import Selector from '../Selector/Selector'
 
 function App() {
   return (
     <div className="App">
-      <Configurator />
+      <Selector />
     </div>
   );
 }
