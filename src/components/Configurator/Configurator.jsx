@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeSelectedPaint } from "../../features/selection/selectionSlice";
+import { changeSelectedPaint, changedSelectedRim } from "../../features/selection/selectionSlice";
+import ViewRim from "../ViewRim/ViewRim";
+
 
 
 
@@ -16,6 +18,9 @@ function Configurator() {
 
     const [carousselImages, setCarousselImages] = useState(imageManager.white.caroussel[1]);
 
+    const [selectedRimImageSource, setSelectedRimImageSource] = useState(imageManager.white.rims)
+    const [rimImageSrc, setRimImageSrc] = useState(selectedRimImageSource[0].image);
+
     // couleurs
 
     const colorsImages = useSelector((store) => store.images.colorSelection);
@@ -29,22 +34,44 @@ function Configurator() {
         }))
 
         if (code === 'blue') {
-                setCarousselImages(imageManager.blue.caroussel[1]) //setCarousselImages(imageManager.code.caroussel[1])
-            } else if (code === 'white') {
-                setCarousselImages(imageManager.white.caroussel[1]) //setCarousselImages(imageManager.code.caroussel[1])
-            } else if (code === 'black') {
-                setCarousselImages(imageManager.black.caroussel[1]) //setCarousselImages(imageManager.code.caroussel[1])
-            }
+            setCarousselImages(imageManager.blue.caroussel[1])
+            setSelectedRimImageSource(imageManager.blue.rims)
 
+        } else if (code === 'white') {
+            setCarousselImages(imageManager.white.caroussel[1])
+            setSelectedRimImageSource(imageManager.white.rims)
+
+        } else if (code === 'black') {
+            setCarousselImages(imageManager.black.caroussel[1])
+            setSelectedRimImageSource(imageManager.black.rims)
+        }
     }
-
-
+    
+console.log(selectedRimImageSource[0].image);
     //jantes
-    const rimsSelectionImage =useSelector((store) => selectedCarAndOptions.version === 'pure' ? store.images.rimsSelection.pure : store.images.rimsSelection.legend);
+    const rimsSelectionImage = useSelector((store) => selectedCarAndOptions.version === 'pure' ? store.images.rimsSelection.pure : store.images.rimsSelection.legend);
 
-const rimOptions = selectedCarAndOptions.version === 'pure' ? options.rims.pure : options.rims.legend
-console.log(rimOptions);
+    const rimOptions = selectedCarAndOptions.version === 'pure' ? options.rims.pure : options.rims.legend
 
+
+
+    function changeRim(name, price, code) {
+
+        dispatch(changedSelectedRim({
+            rimName: name,
+            rimPrice: price,
+            rimCode: code
+        }))
+        if (code === 0) {
+            setRimImageSrc(selectedRimImageSource[0].image)
+
+        } else if (code === 1) {
+            setRimImageSrc(selectedRimImageSource[1].image)
+
+        } else if (code === 2) {
+            setRimImageSrc(selectedRimImageSource[2].image)
+        }
+    }
 
 
     return (
@@ -102,7 +129,7 @@ console.log(rimOptions);
                         <div className="flex justify-around text-center">
                             {rimOptions.map(rim => (
                                 <div key={rim.name} className="px-4 w-1/4">
-                                    <p className="underline hover:cursor-pointer" onClick={() => changePaint(rim.name, rim.price)}>{rim.name}</p>
+                                    <p className="underline hover:cursor-pointer" onClick={() => changeRim(rim.name, rim.price, rim.code)}>{rim.name}</p>
                                     <p>{rim.price} €</p>
                                 </div>
                             ))}
@@ -112,7 +139,7 @@ console.log(rimOptions);
                     </div>
 
                     <div className="w-3/5 h-full flex justify-center items-center">
-                        {/* <img src={} alt="visuel voiture" /> */}
+                        <ViewRim  rimImageSrc={rimImageSrc}/>
                     </div>
                 </div>
 
@@ -130,11 +157,9 @@ console.log(rimOptions);
     );
 }
 
-export default Configurator;
+
+    export default Configurator;
 
 
 // console.log(Object.keys(options));
 
-// const colors = useSelector((store) => store.images.colors);
-
-// const [step, setStep] = useState(0);

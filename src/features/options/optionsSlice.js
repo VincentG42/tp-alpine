@@ -22,13 +22,13 @@ const initialState = {
             title: 'Jantes',
 
                 pure: [
-                    { name: 'Standard', price: 0 },
-                    { name: 'Serac', price: 1000 },
+                    { name: 'Standard', price: 0, code:0 },
+                    { name: 'Serac', price: 1000, code:1 },
                 ],
                 legend: [
-                    { name: 'Standard', price: 0 },
-                    { name: 'Serac', price: 1000 },
-                    { name: 'Légende', price: 0 }
+                    { name: 'Standard', price: 0, code:0 },
+                    { name: 'Serac', price: 1000, code:1 },
+                    { name: 'Légende', price: 0, code:2 },
                 ],
         },
         saddlery: {

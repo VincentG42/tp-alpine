@@ -5,7 +5,7 @@ const initialState = {
     version: 'pure',
     price: 54700,
     color: { name: 'Peinture opaque Blanc Glacier', price: 0, code: 'white' },
-    rims: { name: 'Standard', price: 0 },
+    rims: { name: 'Standard', price: 0, code:0 },
     seddlery: { name: 'Sièges baquets en cuir noir et Dinamica', price: 0 },
     equipements: {
         design: [],
@@ -38,13 +38,21 @@ export const selectionSlice = createSlice({
     name: 'selection',
     initialState,
     reducers: {
-        changePrice: (state, action) => {
-            // state.price = action.payload
+        changedSelectedRim: (state, action) => {
+            state.price -= state.rims.price
+
+            state.rims ={
+                name: action.payload.rimName,
+                price: action.payload.rimPrice,
+                code: action.payload.rimCode
+            }
+
+            state.price += action.payload.rimPrice
         },
         changeSelectedPaint: (state, action) => {
             state.price -= state.color.price  //retour au prix d'avant choix option
 
-        //modif option
+        //modif color
             state.color = {
                 name: action.payload.colorName,
                 price: action.payload.colorPrice,
@@ -64,6 +72,6 @@ export const selectionSlice = createSlice({
 })
 
 
-export const { changePrice, changeSelectedPaint, changeVersion } = selectionSlice.actions
+export const { changedSelectedRim, changeSelectedPaint, changeVersion } = selectionSlice.actions
 
 export default selectionSlice.reducer;

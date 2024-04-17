@@ -94,15 +94,24 @@ const initialState = {
     pure: {
         blue: {
             caroussel: [bluePure1, bluePure2, bluePure3, bluePure4],
-            rims: [blueRimStandard, blueRimSerac],
+            rims: [
+                { name: "standard", image: blueRimStandard, code: 0 },
+                { name: "serac", image: blueRimSerac, code: 1 }
+            ],
         },
         white: {
             caroussel: [whitePure1, whitePure2, whitePure3, whitePure4],
-            rims: [whiteRimStandard, whiteRimSerac]
+            rims: [
+                {name: "standard", image : whiteRimStandard, code: 0}, 
+                {name: "serac", image: whiteRimSerac, code: 1}
+            ]
         },
         black: {
             caroussel: [blackPure1, blackPure2, blackPure3, blackPure4],
-            rims: [blackRimStandard, blackRimSerac]
+            rims: [
+                {name: "standard", image: blackRimStandard, code: 0},
+                {name: "serac", image: blackRimSerac, code: 1},
+            ]
         }
 
     },
@@ -110,16 +119,26 @@ const initialState = {
     legende: {
         blue: {
             caroussel: [bluelegende1, bluelegende2, bluelegende3, bluelegende4],
-            rims: [blueRimStandard, blueRimSerac, blueRimLegende],
+            rims: [
+                { name: "standard", image: blueRimStandard, code:0},
+                { name: "serac", image: blueRimSerac,code:1},
+                { name: "legende", image: blueRimLegende, code:2}
+            ],
 
         },
         white: {
             caroussel: [whitelegende1, whitelegende2, whitelegende3, whitelegende4],
-            rims: [whiteRimStandard, whiteRimSerac, whiteRimLegende],
+            rims: [
+            { name: "standard", image: whiteRimStandard, code:0},
+            { name: "serac", image: whiteRimSerac,code:1},
+            { name: "legende", image: whiteRimLegende, code:2}
+        ],
         },
         black: {
             caroussel: [blacklegende1, blacklegende2, blacklegende3, blacklegende4],
-            rims: [blackRimStandard, blackRimSerac, blackRimLegende],
+            rims: [{ name: "standard", image: blackRimStandard, code:0},
+            { name: "serac", image: blackRimSerac,code:1},
+            { name: "legende", image: blackRimLegende, code:2}],
         }
     }
 
