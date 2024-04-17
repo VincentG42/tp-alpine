@@ -78,9 +78,16 @@ const initialState = {
 
     ],
     rimsSelection: {
-        standard: { name: "standard", image: standardRim, code: "standard" },
-        serac: { name: "serac", image: seracRim, code: "serac" },
-        legende: { name: "legende", image: legendeRim, code: "legende" },
+        pure: [
+            { name: "standard", image: standardRim, code: "standard" },
+            { name: "serac", image: seracRim, code: "serac" },
+        ],
+
+        legend: [
+            { name: "standard", image: standardRim, code: "standard" },
+            { name: "serac", image: seracRim, code: "serac" },
+            { name: "legende", image: legendeRim, code: "legende" },
+        ]
 
     },
 
@@ -102,16 +109,16 @@ const initialState = {
 
     legende: {
         blue: {
-            carrousel: [bluelegende1, bluelegende2, bluelegende3, bluelegende4],
+            caroussel: [bluelegende1, bluelegende2, bluelegende3, bluelegende4],
             rims: [blueRimStandard, blueRimSerac, blueRimLegende],
 
         },
         white: {
-            carrousel: [whitelegende1, whitelegende2, whitelegende3, whitelegende4],
+            caroussel: [whitelegende1, whitelegende2, whitelegende3, whitelegende4],
             rims: [whiteRimStandard, whiteRimSerac, whiteRimLegende],
         },
         black: {
-            carrousel: [blacklegende1, blacklegende2, blacklegende3, blacklegende4],
+            caroussel: [blacklegende1, blacklegende2, blacklegende3, blacklegende4],
             rims: [blackRimStandard, blackRimSerac, blackRimLegende],
         }
     }

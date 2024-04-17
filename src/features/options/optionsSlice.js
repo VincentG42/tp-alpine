@@ -3,27 +3,33 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     version: [
-        
-        { name: 'pure', price: 54700, power: "252hp", maxSpeed: "240", transmission: "7-speed automatic" },
-        { name: 'légende', price: 58500, power: "300hp", maxSpeed: "250", transmission: "7-speed automatic" }
+
+        { name: 'pure', code: 'pure', price: 54700, power: "252hp", maxSpeed: "240", transmission: "7-speed automatic" },
+        { name: 'légende', code: 'legende', price: 58500, power: "300hp", maxSpeed: "250", transmission: "7-speed automatic" }
     ],
     options: {
 
         color: {
             title: 'Couleur',
             declinaison: [
-                { name: "Teinte spéciale Bleu Alpine", price: 1800 },
-                { name: "Teinte métallisée Noir Profond", price: 840 },
-                { name: "Peinture opaque Blanc Glacier", price: 0 },
+                { name: "Teinte spéciale Bleu Alpine", price: 1800, code: 'blue' },
+                { name: "Teinte métallisée Noir Profond", price: 840, code: 'black' },
+                { name: "Peinture opaque Blanc Glacier", price: 0, code: 'white' },
             ],
         },
 
         rims: {
-            title: 'jantes',
-            declinaison: [
-                { name: 'Standard', price: 0, isLegende: false },
-                { name: 'Serac', price: 1000, isLegende: false },
-            ],
+            title: 'Jantes',
+
+                pure: [
+                    { name: 'Standard', price: 0 },
+                    { name: 'Serac', price: 1000 },
+                ],
+                legend: [
+                    { name: 'Standard', price: 0 },
+                    { name: 'Serac', price: 1000 },
+                    { name: 'Légende', price: 0 }
+                ],
         },
         saddlery: {
             title: 'Sellerie',
@@ -118,32 +124,29 @@ const initialState = {
                 ]
             },
             materielDeGarage: {
-                title: "Materiel de garage", declinaison: [
+                title: "Matériel de garage", declinaison: [
                     { name: "Chergeur de batterie", price: 240 },
                     { name: "Kit Outils Alpine", price: 398 },
                 ]
             },
             exterieur: {
-                title: "Exterieur", declinaison: [
+                title: "Extérieur", declinaison: [
                     { name: "Cabochons Alpine - Métalisés", price: 24 },
                     { name: "Housse de protection Alpine", price: 216 },
                     { name: "Antivols pour jante - Noirs", price: 51 },
                 ]
             },
-
-
         }
     },
 }
 
 
-export const configuratorSlice = createSlice({
-    name: 'config',
+export const optionsSlice = createSlice({
+    name: 'options',
     initialState,
     reducers: {}
 })
 
 
-// export const { hitMonster, hitBack, heal, regenMana } = fightSlice.actions
 
-export default configuratorSlice.reducer;
+export default optionsSlice.reducer;

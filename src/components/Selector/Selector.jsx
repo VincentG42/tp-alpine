@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, {  useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Configurator from '../Configurator/Configurator';
 import pure from '../../assets/images/car_selection/pure.png'
 import legende from '../../assets/images/car_selection/legende.png'
+import { changeVersion } from "../../features/selection/selectionSlice";
+
 
 function Selector() {
     //useSelector pour avoir les infos des voitures venant de configuratorSlice
-    const cars = useSelector((store) => store.config.version);
+    const cars = useSelector((store) => store.options.version);
+
+    const dispatch = useDispatch();
+
+
 
 
     //conditionnal rendering logic
@@ -19,6 +25,9 @@ function Selector() {
 
 
     const handleCardClick = () => {
+        if(chosenCarEdition === 'légende'){
+            dispatch(changeVersion());
+        }
 
         setSelectorShown(false);
     };
@@ -26,7 +35,7 @@ function Selector() {
 
 
     return (
-        <div>
+        <div className='h-screen'>
             {selectorShown ? (
                 <div className='flex  justify-center items-center'>
                     {cars.map(car => (
