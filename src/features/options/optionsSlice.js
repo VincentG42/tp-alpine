@@ -31,16 +31,19 @@ const initialState = {
                     { name: 'Légende', price: 0, code:2 },
                 ],
         },
-        saddlery: {
+        seddlery: {
             title: 'Sellerie',
-            declinaison: [
-                { name: 'Sièges baquets en cuir noir et Dinamica', price: 0, isLegende: false },
-                { name: 'Sièges Confort en cuir noir perforé', price: 800, isLegende: false },
-                { name: 'Sièges Confort en cuir noir', price: 0, isLegende: true },
-                { name: 'Sièges Confort en cuir brun', price: 800, isLegende: true }
+            pure: [
+                { name: 'Sièges baquets en cuir noir et Dinamica', price: 0, code:0 },
+                { name: 'Sièges Confort en cuir noir perforé', price: 800, code:1  },
+            ],
+            legend: [
+                { name: 'Sièges Confort en cuir noir', price: 0, code:0 },
+                { name: 'Sièges Confort en cuir brun', price: 800, code:1}
             ],
         },
         equipements: {
+            title: "Equipements",
             design: {
                 title: "Design",
                 declinaison: [

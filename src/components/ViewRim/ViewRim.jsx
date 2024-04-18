@@ -4,7 +4,7 @@ function ViewRim({rimImageSrc}) {
 
   return (
     <>
-    <img src={rimImageSrc} alt="visuel jante" />
+    <img src={rimImageSrc} alt="visuel jante"  className='h-auto'/>
     </>
   )
 }

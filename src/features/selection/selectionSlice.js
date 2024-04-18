@@ -38,6 +38,16 @@ export const selectionSlice = createSlice({
     name: 'selection',
     initialState,
     reducers: {
+        changeSelectedSeddlery: (state, action) => {
+            state.price -= state.seddlery.price
+
+            state.seddlery = {
+                name: action.payload.seddleryName,
+                price: action.payload.seddleryPrice,
+            }
+            state.price += action.payload.seddleryPrice
+            
+        },
         changedSelectedRim: (state, action) => {
             state.price -= state.rims.price
 
@@ -72,6 +82,6 @@ export const selectionSlice = createSlice({
 })
 
 
-export const { changedSelectedRim, changeSelectedPaint, changeVersion } = selectionSlice.actions
+export const { changeSelectedSeddlery, changedSelectedRim, changeSelectedPaint, changeVersion } = selectionSlice.actions
 
 export default selectionSlice.reducer;
