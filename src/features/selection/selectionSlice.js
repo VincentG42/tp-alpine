@@ -5,7 +5,7 @@ const initialState = {
     version: 'pure',
     price: 54700,
     color: { name: 'Peinture opaque Blanc Glacier', price: 0, code: 'white' },
-    rims: { name: 'Standard', price: 0, code:0 },
+    rims: { name: 'Standard', price: 0, code: 0 },
     seddlery: { name: 'Sièges baquets en cuir noir et Dinamica', price: 0 },
     equipements: {
         design: [],
@@ -16,7 +16,10 @@ const initialState = {
             { name: 'Retroviseur intérieur électrochrome', price: 0 },
             { name: 'Régulateur / limiteur de vitesse', price: 0 },
         ],
-        drive: [],
+        drive: {
+            park: null,
+            muffler: null,
+        },
         persoExterieur: [
             { name: 'Etriers de frein couleur gris Anthracite', price: 0 },
         ],
@@ -38,6 +41,55 @@ export const selectionSlice = createSlice({
     name: 'selection',
     initialState,
     reducers: {
+
+        changeDesignOptions: (state, action) => {
+
+            const currentOptions = state.equipements.design.find(option => option.code === action.payload.designCode)
+
+            if(currentOptions){
+                const filteredArray = state.equipements.design.filter(option => option.code !== action.payload.designCode)
+                state.equipements.design = filteredArray
+                state.price -= action.payload.designPrice
+            } else{
+                state.equipements.design.push({ name: action.payload.designName, price: action.payload.designPrice, code: action.payload.designCode })
+                state.price += action.payload.designPrice
+            }
+        },
+
+        changeComfortOPtions: (state, action) => {
+
+            const currentOptions = state.equipements.confort.find(option => option.code === action.payload.comfortCode)
+            if (currentOptions) {
+                const filteredArray =state.equipements.confort.filter(option => option.code !== action.payload.comfortCode)
+                state.equipements.confort = filteredArray
+                state.price -=action.payload.comfortPrice
+            } else {
+                state.equipements.confort.push({ name: action.payload.comfortName, price: action.payload.comfortPrice, code: action.payload.comfortCode })
+                state.price += action.payload.comfortPrice
+            }
+
+        },
+        changeSelectedAssist: (state, action) => {
+            state.equipements.drive.park &&
+                (state.price -= state.equipements.drive.park.price)
+
+            state.equipements.drive.park = { name: action.payload.assistName, price: action.payload.assistPrice, code: action.payload.assistCode }
+
+            state.price += action.payload.assistPrice
+
+        },
+        changeMuffler: (state, action) => {
+            if(state.equipements.drive.muffler === null ){
+
+            state.equipements.drive.muffler = { name: action.payload.mufflerName, price: action.payload.mufflerPrice }
+    
+            state.price += action.payload.mufflerPrice 
+            } else {
+                (state.price -= state.equipements.drive.muffler.price)
+                state.equipements.drive.muffler =null
+            }
+        },
+
         changeSelectedSeddlery: (state, action) => {
             state.price -= state.seddlery.price
 
@@ -46,12 +98,12 @@ export const selectionSlice = createSlice({
                 price: action.payload.seddleryPrice,
             }
             state.price += action.payload.seddleryPrice
-            
+
         },
         changedSelectedRim: (state, action) => {
             state.price -= state.rims.price
 
-            state.rims ={
+            state.rims = {
                 name: action.payload.rimName,
                 price: action.payload.rimPrice,
                 code: action.payload.rimCode
@@ -62,14 +114,14 @@ export const selectionSlice = createSlice({
         changeSelectedPaint: (state, action) => {
             state.price -= state.color.price  //retour au prix d'avant choix option
 
-        //modif color
+            //modif color
             state.color = {
                 name: action.payload.colorName,
                 price: action.payload.colorPrice,
                 code: action.payload.colorCode
             }
 
-                state.price += action.payload.colorPrice //ajout du nouveau prix
+            state.price += action.payload.colorPrice //ajout du nouveau prix
         },
         changeVersion: (state) => {
 
@@ -82,6 +134,6 @@ export const selectionSlice = createSlice({
 })
 
 
-export const { changeSelectedSeddlery, changedSelectedRim, changeSelectedPaint, changeVersion } = selectionSlice.actions
+export const {changeDesignOptions, changeComfortOPtions, changeMuffler, changeSelectedSeddlery, changedSelectedRim, changeSelectedPaint, changeVersion, changeSelectedAssist } = selectionSlice.actions
 
 export default selectionSlice.reducer;

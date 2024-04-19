@@ -95,12 +95,40 @@ import design from '../../assets/images/equipements/selection/design.jpg'
 import media from '../../assets/images/equipements/selection/media-nav.jpg'
 import persoExt from '../../assets/images/equipements/selection/perso-ext.jpg'
 import persoInt from '../../assets/images/equipements/selection/perso-int.jpg'
-import security from '../../assets/images/equipements/selection/securite.jpg'
 
+//select 
+//drive
+import backParkHelp from '../../assets/images/equipements/categories/conduite/aide-stationnement-ar.jpg'
+import backFrontParkHelp from '../../assets/images/equipements/categories/conduite/aide-stationnement-av-ar.jpg'
+import rearCamera from '../../assets/images/equipements/categories/conduite/camera-recul.jpg'
+import sportMuffler from '../../assets/images/equipements/categories/conduite/echappement-sport.jpg'
 
+//comfort
+import storagePack from '../../assets/images/equipements/categories/confort/pack-rangement.jpg'
+import speedRegulator from '../../assets/images/equipements/categories/confort/regul-limit-vitesse.jpg'
+import warmExtMirror from '../../assets/images/equipements/categories/confort/retro-ext-chaffant.jpg'
+import electrochromeIntMirror from '../../assets/images/equipements/categories/confort/retro-int-electrochrome.jpg'
 
+//design
+import heritagePAck from '../../assets/images/equipements/categories/design/pack-heritage.jpg'
+import aluminiumFootRest from '../../assets/images/equipements/categories/design/repose-pied-alu.jpg'
 
+// media
+import alpineMetrics from '../../assets/images/equipements/categories/media et navigation/alpine-metrics.jpg'
+import audioFocal from '../../assets/images/equipements/categories/media et navigation/audio-focal.jpg'
+import audioStandard from '../../assets/images/equipements/categories/media et navigation/audio-standard.jpg'
+import audioPremium from '../../assets/images/equipements/categories/media et navigation/audio-premium.jpg'
 
+//persoExt
+import blueBrakeCaliper from '../../assets/images/equipements/categories/personnalisation exterieure/etrier-bleu.jpg'
+import greyBrakeCaliper from '../../assets/images/equipements/categories/personnalisation exterieure/etrier-gris.jpg'
+import alpineLogo from '../../assets/images/equipements/categories/personnalisation exterieure//logo-alpine.jpg'
+
+//persoInt
+import carbonePack from '../../assets/images/equipements/categories/personnalisation interieure/pack-carbone.jpg'
+import warmSeat from '../../assets/images/equipements/categories/personnalisation interieure/siege-chauffant.jpg'
+import aluminiumPedal from '../../assets/images/equipements/categories/personnalisation interieure/pedal-alu.jpg'
+import steeringWheelLogo from '../../assets/images/equipements/categories/personnalisation interieure/logo-volant.jpg'
 
 
 
@@ -140,13 +168,12 @@ const initialState = {
     },
 
     equipementsCategories: [
-        { name: 'Conduite', image: drive },
-        { name: 'Confort', image: comfort },
-        { name: 'Design', image: design },
+        { name: 'Conduite', image: drive, code: 'drive' },
+        { name: 'Confort', image: comfort, code: 'comfort' },
+        { name: 'Design', image: design, code: 'design' },
         { name: 'Média & Navigation', image: media },
-        { name: 'Personnalisation extérieure', image: persoExt },
-        { name: 'Personnalisation intérieure', image: persoInt },
-        { name: 'Securité', image: security },
+        { name: 'Personnalisation extérieure', image: persoExt, code: 'persoExt' },
+        { name: 'Personnalisation intérieure', image: persoInt, code: 'persoInt' },
     ],
 
     pure: {
@@ -209,7 +236,32 @@ const initialState = {
             [legendBlackSeddlery1, legendBlackSeddlery2, legendBlackSeddlery3],
             [legendBrownSeddlery1, legendBrownSeddlery2, legendBrownSeddlery3],
         ]
+    },
+
+    equipments: {
+        drive: {
+            parkAssist: {
+                park1: { image: backParkHelp },
+                park2: { image: backFrontParkHelp },
+                park3: { image: rearCamera },
+            },
+            muffler: sportMuffler
+        },
+        design: [heritagePAck, aluminiumFootRest],
+        media: {
+            navigation: alpineMetrics,
+            audio: [audioFocal, audioStandard, audioPremium]
+        },
+        comfort: [electrochromeIntMirror, warmExtMirror, storagePack, speedRegulator, ],
+        persoExt: {
+            logo: alpineLogo,
+            breakCaliper: [blueBrakeCaliper, greyBrakeCaliper]
+        },
+        persoInt: [carbonePack, warmSeat, aluminiumPedal, steeringWheelLogo]
     }
+
+
+
 
 }
 

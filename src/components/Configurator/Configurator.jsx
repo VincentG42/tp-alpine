@@ -43,18 +43,12 @@ function Configurator() {
             colorCode: code
         }))
 
-        if (code === 'blue') {
-            setCarousselImages(imageManager.blue.caroussel[1])
-            setSelectedRimImageSource(imageManager.blue.rims)
 
-        } else if (code === 'white') {
-            setCarousselImages(imageManager.white.caroussel[1])
-            setSelectedRimImageSource(imageManager.white.rims)
+        const colorImages = imageManager[code]; // Accède à l'objet correspondant à la couleur
 
-        } else if (code === 'black') {
-            setCarousselImages(imageManager.black.caroussel[1])
-            setSelectedRimImageSource(imageManager.black.rims)
-        }
+        setCarousselImages(colorImages?.caroussel[1]);
+        setSelectedRimImageSource(colorImages?.rims);
+
     }
 
     // setter pour que la vue des jantes se mette à jour en fonction de la couleur carrosiere choisie

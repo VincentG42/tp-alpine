@@ -31,6 +31,7 @@ const initialState = {
                     { name: 'Légende', price: 0, code:2 },
                 ],
         },
+
         seddlery: {
             title: 'Sellerie',
             pure: [
@@ -42,13 +43,14 @@ const initialState = {
                 { name: 'Sièges Confort en cuir brun', price: 800, code:1}
             ],
         },
+        
         equipements: {
             title: "Equipements",
             design: {
                 title: "Design",
                 declinaison: [
-                    { name: 'Pack héritage', price: 180 },
-                    { name: 'Repose-pieds ^passager en aluminium', price: 96 }
+                    { name: 'Pack héritage', price: 180, code:0 },
+                    { name: 'Repose-pieds passager en aluminium', price: 96, code:1 }
                 ],
             },
             mediaAndNavigation: {
@@ -60,33 +62,25 @@ const initialState = {
                     { name: "Système Audio standard", price: 0 },
                 ],
             },
-            confort: {
+            comfort: {
                 title: "Confort",
                 declinaison: [
-                    { name: "Rétroviseur intérieur électrochrome", price: 0 },
-                    { name: "Rétroviseurs ext. chauf. rabattables élec.", price: 504 },
-                    { name: "Pack de rangement", price: 504 },
-                    { name: "Régulateur / limiteur de vitesse", price: 0 },
+                    { name: "Rétroviseur intérieur électrochrome", price: 0, code: 0 },
+                    { name: "Rétroviseurs ext. chauf. rabattables élec.", price: 504, code:1 },
+                    { name: "Pack de rangement", price: 504, code:2 },
+                    { name: "Régulateur / limiteur de vitesse", price: 0, code:3 },
                 ],
             },
-            conduite: {
+            drive: {
                 title: "Conduite",
-                declinaison: [
-                    { name: "Aide au stationnement AR", price: 420 },
-                    { name: "Aide au stationnement AV et AR", price: 750 },
-                    { name: "Aide au stationnement AV AR et caméra de recul", price: 1200 },
-                    { name: "Echappement Sport actif", price: 1500 },
+                parkAssist: [
+                    { name: "Aide au stationnement AR", price: 420, code:'park1' },
+                    { name: "Aide au stationnement AV et AR", price: 750, code:'park2' },
+                    { name: "Aide au stationnement AV AR et caméra de recul", price: 1200, code:'park3' },
                 ],
+                muffler:{ name: "Echappement Sport actif", price: 1500, code: 'muffler' }
             },
-            securite: {
-                title: "Sécurité",
-                declinaison: [
-                    { name: "Système de freinage Haute-Perf 320mm", price: 1000 },
-                    { name: "Assistance au freinage d'urgence", price: 0 },
-                    { name: "Airbags frontaux conducteur et passager", price: 0 },
-                ],
-            },
-            persoExterieur: {
+            persoExt: {
                 title: "Personnalisation extérieure",
                 declinaison: [
                     { name: "Etriers de frein couleur Bleu Alpine", price: 384 },
@@ -94,12 +88,15 @@ const initialState = {
                     { name: "Etriers de frein couleur Gris Anthracite", price: 0 },
                 ],
             },
-            persoInterieur: [
-                { name: "Pédalier en aluminium", price: 120 },
-                { name: "Harmonie carbone mat", price: 0 },
-                { name: "Logo au centre du volant en Bleu Alpine", price: 84 },
-                { name: "Sièges chauffants", price: 400 },
-            ],
+            persoInt:{ 
+                title: "Personnalisation interieure", 
+                declinaison: [
+                    { name: "Pédalier en aluminium", price: 120 },
+                    { name: "Harmonie carbone mat", price: 0 },
+                    { name: "Logo au centre du volant en Bleu Alpine", price: 84 },
+                    { name: "Sièges chauffants", price: 400 },
+                ],
+            }
         },
         accessoires: {
             transportEtProtection: {
