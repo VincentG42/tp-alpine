@@ -83,11 +83,12 @@ const initialState = {
             },
             persoExt: {
                 title: "Personnalisation extérieure",
-                declinaison: [
-                    { name: "Etriers de frein couleur Bleu Alpine", price: 384 },
-                    { name: "Logo Alpine sur les ailes avant", price: 120 },
-                    { name: "Etriers de frein couleur Gris Anthracite", price: 0 },
+                brakeCaliper: [
+                    { name: "Etriers de frein couleur Bleu Alpine", price: 384, code:'caliper1' },
+                    { name: "Etriers de frein couleur Gris Anthracite", price: 0, code: 'caliper2' },
                 ],
+                logo: { name: "Logo Alpine sur les ailes avant", price: 120, code:'logo' },
+
             },
             persoInt:{ 
                 title: "Personnalisation interieure", 

@@ -259,7 +259,10 @@ const initialState = {
         comfort: [electrochromeIntMirror, warmExtMirror, storagePack, speedRegulator, ],
         persoExt: {
             logo: alpineLogo,
-            breakCaliper: [blueBrakeCaliper, greyBrakeCaliper]
+            brakeCaliper:{
+                caliper1:{image:greyBrakeCaliper},
+                caliper2:{image:blueBrakeCaliper}
+            }
         },
         persoInt: [carbonePack, warmSeat, aluminiumPedal, steeringWheelLogo]
     }

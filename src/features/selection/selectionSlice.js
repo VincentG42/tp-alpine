@@ -21,9 +21,11 @@ const initialState = {
             park: null,
             muffler: null,
         },
-        persoExterieur: [
-            { name: 'Etriers de frein couleur gris Anthracite', price: 0 },
-        ],
+        persoExterieur: {
+            caliper : { name: 'Etriers de frein couleur gris Anthracite', price: 0 },
+            logo: null
+        }
+        ,
         persoInterieur: [
             { name: 'Harmonie carbone mat', price: 0 },
         ]
@@ -42,6 +44,26 @@ export const selectionSlice = createSlice({
     name: 'selection',
     initialState,
     reducers: {
+        changeLogo: (state, action) => {
+            if (state.equipements.persoExterieur.logo === null) {
+
+                state.equipements.persoExterieur.logo = { name: action.payload.logoName, price: action.payload.logoPrice }
+                state.price += action.payload.logoPrice
+            } else {
+                (state.price -= state.equipements.persoExterieur.logo.price)
+                state.equipements.persoExterieur.logo = null
+            }
+        },
+
+        changeSelectedCaliper: (state, action) => {
+            state.equipements.persoExterieur.caliper &&
+                (state.price -= state.equipements.persoExterieur.caliper.price)
+
+                state.equipements.persoExterieur.caliper = { name: action.payload.caliperName, price: action.payload.caliperPrice, code: action.payload.caliperCode }
+
+            state.price += action.payload.caliperPrice
+
+        },
         changeSelectedAudio: (state, action) => {
             state.equipements.mediaAndNavigation.audio &&
                 (state.price -= state.equipements.mediaAndNavigation.audio.price)
@@ -157,6 +179,6 @@ export const selectionSlice = createSlice({
 })
 
 
-export const { changeSelectedAudio, changeTelemetrics, changeDesignOptions, changeComfortOPtions, changeMuffler, changeSelectedSeddlery, changedSelectedRim, changeSelectedPaint, changeVersion, changeSelectedAssist } = selectionSlice.actions
+export const {changeLogo, changeSelectedCaliper, changeSelectedAudio, changeTelemetrics, changeDesignOptions, changeComfortOPtions, changeMuffler, changeSelectedSeddlery, changedSelectedRim, changeSelectedPaint, changeVersion, changeSelectedAssist } = selectionSlice.actions
 
 export default selectionSlice.reducer;
