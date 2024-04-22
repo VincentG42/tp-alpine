@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toBePartiallyChecked } from "@testing-library/jest-dom/matchers";
 
 
 const initialState = {
@@ -21,44 +22,44 @@ const initialState = {
         rims: {
             title: 'Jantes',
 
-                pure: [
-                    { name: 'Standard', price: 0, code:0 },
-                    { name: 'Serac', price: 1000, code:1 },
-                ],
-                legend: [
-                    { name: 'Standard', price: 0, code:0 },
-                    { name: 'Serac', price: 1000, code:1 },
-                    { name: 'Légende', price: 0, code:2 },
-                ],
+            pure: [
+                { name: 'Standard', price: 0, code: 0 },
+                { name: 'Serac', price: 1000, code: 1 },
+            ],
+            legend: [
+                { name: 'Standard', price: 0, code: 0 },
+                { name: 'Serac', price: 1000, code: 1 },
+                { name: 'Légende', price: 0, code: 2 },
+            ],
         },
 
         seddlery: {
             title: 'Sellerie',
             pure: [
-                { name: 'Sièges baquets en cuir noir et Dinamica', price: 0, code:0 },
-                { name: 'Sièges Confort en cuir noir perforé', price: 800, code:1  },
+                { name: 'Sièges baquets en cuir noir et Dinamica', price: 0, code: 0 },
+                { name: 'Sièges Confort en cuir noir perforé', price: 800, code: 1 },
             ],
             legend: [
-                { name: 'Sièges Confort en cuir noir', price: 0, code:0 },
-                { name: 'Sièges Confort en cuir brun', price: 800, code:1}
+                { name: 'Sièges Confort en cuir noir', price: 0, code: 0 },
+                { name: 'Sièges Confort en cuir brun', price: 800, code: 1 }
             ],
         },
-        
+
         equipements: {
             title: "Equipements",
             design: {
                 title: "Design",
                 declinaison: [
-                    { name: 'Pack héritage', price: 180, code:0 },
-                    { name: 'Repose-pieds passager en aluminium', price: 96, code:1 }
+                    { name: 'Pack héritage', price: 180, code: 0 },
+                    { name: 'Repose-pieds passager en aluminium', price: 96, code: 1 }
                 ],
             },
             mediaAndNavigation: {
                 title: "Média & Navigation",
                 audio: [
-                    { name: "Système Audio Focal", price: 600, code:'audio1' },
-                    { name: "Système Audio Focal Premium", price: 1200, code:'audio2' },
-                    { name: "Système Audio standard", price: 0, code:'audio3' },
+                    { name: "Système Audio Focal", price: 600, code: 'audio1' },
+                    { name: "Système Audio Focal Premium", price: 1200, code: 'audio2' },
+                    { name: "Système Audio standard", price: 0, code: 'audio3' },
                 ],
                 telemetrics: { name: "Alpine Télémetrics", price: 204, code: 'telemetrics' },
 
@@ -67,36 +68,36 @@ const initialState = {
                 title: "Confort",
                 declinaison: [
                     { name: "Rétroviseur intérieur électrochrome", price: 0, code: 0 },
-                    { name: "Rétroviseurs ext. chauf. rabattables élec.", price: 504, code:1 },
-                    { name: "Pack de rangement", price: 504, code:2 },
-                    { name: "Régulateur / limiteur de vitesse", price: 0, code:3 },
+                    { name: "Rétroviseurs ext. chauf. rabattables élec.", price: 504, code: 1 },
+                    { name: "Pack de rangement", price: 504, code: 2 },
+                    { name: "Régulateur / limiteur de vitesse", price: 0, code: 3 },
                 ],
             },
             drive: {
                 title: "Conduite",
                 parkAssist: [
-                    { name: "Aide au stationnement AR", price: 420, code:'park1' },
-                    { name: "Aide au stationnement AV et AR", price: 750, code:'park2' },
-                    { name: "Aide au stationnement AV AR et caméra de recul", price: 1200, code:'park3' },
+                    { name: "Aide au stationnement AR", price: 420, code: 'park1' },
+                    { name: "Aide au stationnement AV et AR", price: 750, code: 'park2' },
+                    { name: "Aide au stationnement AV AR et caméra de recul", price: 1200, code: 'park3' },
                 ],
-                muffler:{ name: "Echappement Sport actif", price: 1500, code: 'muffler' }
+                muffler: { name: "Echappement Sport actif", price: 1500, code: 'muffler' }
             },
             persoExt: {
                 title: "Personnalisation extérieure",
                 brakeCaliper: [
-                    { name: "Etriers de frein couleur Bleu Alpine", price: 384, code:'caliper1' },
+                    { name: "Etriers de frein couleur Bleu Alpine", price: 384, code: 'caliper1' },
                     { name: "Etriers de frein couleur Gris Anthracite", price: 0, code: 'caliper2' },
                 ],
-                logo: { name: "Logo Alpine sur les ailes avant", price: 120, code:'logo' },
+                logo: { name: "Logo Alpine sur les ailes avant", price: 120, code: 'logo' },
 
             },
-            persoInt:{ 
-                title: "Personnalisation interieure", 
+            persoInt: {
+                title: "Personnalisation interieure",
                 declinaison: [
-                    { name: "Pédalier en aluminium", price: 120 },
-                    { name: "Harmonie carbone mat", price: 0 },
-                    { name: "Logo au centre du volant en Bleu Alpine", price: 84 },
-                    { name: "Sièges chauffants", price: 400 },
+                    { name: "Pédalier en aluminium", price: 120, code: 0 },
+                    { name: "Harmonie carbone mat", price: 0, code: 1 },
+                    { name: "Logo au centre du volant en Bleu Alpine", price: 84, code: 2 },
+                    { name: "Sièges chauffants", price: 400, code: 3 },
                 ],
             }
         },
@@ -140,14 +141,24 @@ const initialState = {
             },
         }
     },
+    currentOption: 0,
+    totalCategories: 5
 }
 
 
 export const optionsSlice = createSlice({
     name: 'options',
     initialState,
-    reducers: {}
+    reducers: {
+        changeCurrentOption: (state, action) => {
+            state.currentOption < 5 &&
+                (state.currentOption += 1)
+
+        }
+    }
 })
+
+export const { changeCurrentOption } = optionsSlice.actions
 
 
 

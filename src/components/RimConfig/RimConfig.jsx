@@ -13,7 +13,7 @@ function RimConfig({ options, rimsSelectionImage, rimOptions, changeRim, rimImag
 
                 <RimItemsSelector rimsSelectionImage={rimsSelectionImage} rimOptions={rimOptions} changeRim={changeRim} />
 
-                <div className="w-3/4 flex justify-end items-sart">
+                <div className="w-2/3 flex justify-end items-start">
                     <ViewRim rimImageSrc={rimImageSrc} />
                 </div>
             </div></>

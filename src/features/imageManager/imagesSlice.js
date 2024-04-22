@@ -256,7 +256,7 @@ const initialState = {
                 audio3:{image:audioFocal}
             }
         },
-        comfort: [electrochromeIntMirror, warmExtMirror, storagePack, speedRegulator, ],
+        comfort: [electrochromeIntMirror, warmExtMirror, storagePack, speedRegulator],
         persoExt: {
             logo: alpineLogo,
             brakeCaliper:{
@@ -264,7 +264,7 @@ const initialState = {
                 caliper2:{image:blueBrakeCaliper}
             }
         },
-        persoInt: [carbonePack, warmSeat, aluminiumPedal, steeringWheelLogo]
+        persoInt: [aluminiumPedal, carbonePack,  steeringWheelLogo, warmSeat]
     }
 
 

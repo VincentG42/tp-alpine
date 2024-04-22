@@ -11,7 +11,7 @@ function SeddleryConfig({ options, seddlerySelectionImages, seddleryOptions, cha
             </div>
 
             <div className="flex justify-around items-center h-5/6">
-                <div className="w-3/4 h-full flex justify-end items-sart">
+                <div className="w-3/4 h-full flex justify-end items-center">
                     <SeddleryView seddleryImageSrc={seddleryImageSrc} />
                 </div>
 

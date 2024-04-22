@@ -21,7 +21,7 @@ function DesignDetails({ options, setShowDesignDetails }) {
         <div className='absolute z-10  backdrop-blur bg-slate-900 bg-opacity-10 h-5/6 w-full flex justify-center items-center'>
             <div id="driveModal" className='bg-slate-100 border border-slate-900 text-slate-900 w-5/6 pb-16 flex flex-col gap-8 p-8 relative' >
                 <button className='absolute top-0 right-1 font-bold text-slate-900' onClick={() => setShowDesignDetails(false)}> X</button>
-                <h3 className='text-center text-xl font-bold'>{options.equipements.drive.title}</h3>
+                <h3 className='text-center text-xl font-bold'>{options.equipements.design.title}</h3>
                 <div className='flex  flex-col gap-1'>
                     {options.equipements.design.declinaison.map((option) => 
                         <div key={option.code} >

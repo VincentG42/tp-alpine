@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Children, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeSelectedPaint, changedSelectedRim, changeSelectedSeddlery } from "../../features/selection/selectionSlice";
 import ConfigBottomBar from "../configBottomBar/configBottomBar";
@@ -6,6 +6,7 @@ import PaintConfig from "../PaintConfig/PaintConfig";
 import RimConfig from "../RimConfig/RimConfig";
 import SeddleryConfig from "../SeddleryConfig/SeddleryConfig";
 import EquipementConfig from "../EquipementConfig/EquipementConfig";
+import Summary from "../Summary/Summary";
 
 
 
@@ -20,11 +21,11 @@ function Configurator() {
     const options = useSelector((store) => store.options.options);
 
     //selection la bonne 'galerie' d'images en fonction de la version
-    
+
     const imageManager = useSelector((store) => selectedCarAndOptions.version === 'pure' ? store.images.pure : store.images.legende);
 
     //selection des images pour la vue externe de la voiture
-    const [carousselImages, setCarousselImages] = useState(imageManager.white.caroussel[1]);
+    const [carousselImages, setCarousselImages] = useState(imageManager.white.caroussel);
 
     //selection des images pour les jantes
     const [selectedRimImageSource, setSelectedRimImageSource] = useState(imageManager.white.rims)
@@ -34,7 +35,7 @@ function Configurator() {
     // recup des images pour le choix des couleurs
     const colorsImages = useSelector((store) => store.images.colorSelection);
 
-    //
+    //setter peinture change peitnure dans la vue "peinture" et "jantes"
     function changePaint(name, price, code) {
         dispatch(changeSelectedPaint({
             colorName: name,
@@ -45,7 +46,7 @@ function Configurator() {
 
         const colorImages = imageManager[code]; // Accède à l'objet correspondant à la couleur
 
-        setCarousselImages(colorImages?.caroussel[1]);
+        setCarousselImages(colorImages?.caroussel);
         setSelectedRimImageSource(colorImages?.rims);
 
     }
@@ -69,11 +70,11 @@ function Configurator() {
         dispatch(changeSelectedSeddlery({
             seddleryName: name,
             seddleryPrice: price,
-            seddleryCode: code  
+            seddleryCode: code
         }))
         code === 0 ? setSeddleryImageSrc(imageManager.seddlery[0][0]) : setSeddleryImageSrc(imageManager.seddlery[1][0])
 
-        
+
     }
 
     function changeRim(name, price, code) {
@@ -94,52 +95,67 @@ function Configurator() {
         }
     }
 
+    //gestion affichage des div
+    const currentOption = useSelector((store) => store.options.currentOption)
+
 
     return (
         <div className="flex flex-col">
-
             {/* bottom bar position fixed */}
             <div className="w-full bg-slate-900 text-slate-100 flex justify-between items-center h-24 fixed bottom-0 z-50">
                 <ConfigBottomBar selectedCarAndOptions={selectedCarAndOptions} />
             </div>
 
-            {/* couleur config */}
-            <div id="option-1" className="h-screen">
-                <PaintConfig options={options}
-                            carousselImages={carousselImages} 
-                            colorsImages={colorsImages} 
+                {/* couleur config */}
+                {currentOption === 0 &&
+                    <div id="option-1" className="h-screen">
+                        <PaintConfig options={options}
+                            carousselImages={carousselImages}
+                            colorsImages={colorsImages}
                             changePaint={changePaint} />
-            </div>
+                    </div>
+                }
 
-            {/* jantes config */}
-            <div id="option-2" className="h-screen">
-                <RimConfig options ={options} 
-                            selectedCarAndOptions={selectedCarAndOptions} 
-                            rimsSelectionImage={rimsSelectionImage} 
-                            rimOptions={rimOptions} 
-                            changeRim={changeRim} 
+                {/* jantes config */}
+                {currentOption === 1 &&
+
+                    <div id="option-2" className="h-screen">
+                        <RimConfig options={options}
+                            selectedCarAndOptions={selectedCarAndOptions}
+                            rimsSelectionImage={rimsSelectionImage}
+                            rimOptions={rimOptions}
+                            changeRim={changeRim}
                             rimImageSrc={rimImageSrc} />
-            </div>
+                    </div>
+                }
+                {/* sellerie config */}
+                {currentOption === 2 &&
 
-            {/* sellerie config */}
-            <div id="option-3" className="h-screen">
-                <SeddleryConfig options ={options} 
-                                seddlerySelectionImages={seddlerySelectionImages} 
-                                seddleryOptions={seddleryOptions} 
-                                changeSeddlery={changeSeddlery}  
-                                seddleryImageSrc={seddleryImageSrc} />
-            </div>
+                    <div id="option-3" className="h-screen">
+                        <SeddleryConfig options={options}
+                            seddlerySelectionImages={seddlerySelectionImages}
+                            seddleryOptions={seddleryOptions}
+                            changeSeddlery={changeSeddlery}
+                            seddleryImageSrc={seddleryImageSrc} />
+                    </div>
+                }
+                {/* equipements config */}
+                {currentOption === 3 &&
+
+                    <div id="option-4" className="h-screen">
+                        <EquipementConfig options={options} selectedCarAndOptions={selectedCarAndOptions} />
+                    </div>
+                }
+
+                {currentOption === 4 &&
+                <div id="option-5" className="h-screen flex justify-center items-center">Coming Soon</div>}
 
 
-            {/* equipements config */}
 
-            <div id="option-4" className="h-screen">
-                <EquipementConfig options={options} selectedCarAndOptions={selectedCarAndOptions} />
-            </div>
-
-
-
-
+                {currentOption === 5 &&
+                <div id="summary" className="h-screen">
+                    <Summary />    
+                </div>}
 
         </div>
     );
@@ -148,6 +164,4 @@ function Configurator() {
 
 export default Configurator;
 
-
-// console.log(Object.keys(options));
 

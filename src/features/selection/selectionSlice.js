@@ -44,6 +44,21 @@ export const selectionSlice = createSlice({
     name: 'selection',
     initialState,
     reducers: {
+
+        changePersoIntOPtions: (state, action) => {
+
+            const currentOptions = state.equipements.persoInterieur.find(option => option.code === action.payload.persoIntCode)
+            if (currentOptions) {
+                const filteredArray = state.equipements.persoInterieur.filter(option => option.code !== action.payload.persoIntCode)
+                state.equipements.persoInterieur = filteredArray
+                state.price -= action.payload.persoIntPrice
+            } else {
+                state.equipements.persoInterieur.push({ name: action.payload.persoIntName, price: action.payload.persoIntPrice, code: action.payload.persoIntCode })
+                state.price += action.payload.persoIntPrice
+            }
+
+        },
+
         changeLogo: (state, action) => {
             if (state.equipements.persoExterieur.logo === null) {
 
@@ -179,6 +194,6 @@ export const selectionSlice = createSlice({
 })
 
 
-export const {changeLogo, changeSelectedCaliper, changeSelectedAudio, changeTelemetrics, changeDesignOptions, changeComfortOPtions, changeMuffler, changeSelectedSeddlery, changedSelectedRim, changeSelectedPaint, changeVersion, changeSelectedAssist } = selectionSlice.actions
+export const {changePersoIntOPtions, changeLogo, changeSelectedCaliper, changeSelectedAudio, changeTelemetrics, changeDesignOptions, changeComfortOPtions, changeMuffler, changeSelectedSeddlery, changedSelectedRim, changeSelectedPaint, changeVersion, changeSelectedAssist } = selectionSlice.actions
 
 export default selectionSlice.reducer;
