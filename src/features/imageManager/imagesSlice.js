@@ -250,7 +250,11 @@ const initialState = {
         design: [heritagePAck, aluminiumFootRest],
         media: {
             navigation: alpineMetrics,
-            audio: [audioFocal, audioStandard, audioPremium]
+            audio:{
+                audio1:{image:audioStandard},
+                audio2:{image:audioPremium},
+                audio3:{image:audioFocal}
+            }
         },
         comfort: [electrochromeIntMirror, warmExtMirror, storagePack, speedRegulator, ],
         persoExt: {

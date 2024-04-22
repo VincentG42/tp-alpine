@@ -55,12 +55,13 @@ const initialState = {
             },
             mediaAndNavigation: {
                 title: "Média & Navigation",
-                declinaison: [
-                    { name: "Alpine Télémetrics", price: 204 },
-                    { name: "Système Audio Focal", price: 600 },
-                    { name: "Système Audio Focal Premium", price: 1200 },
-                    { name: "Système Audio standard", price: 0 },
+                audio: [
+                    { name: "Système Audio Focal", price: 600, code:'audio1' },
+                    { name: "Système Audio Focal Premium", price: 1200, code:'audio2' },
+                    { name: "Système Audio standard", price: 0, code:'audio3' },
                 ],
+                telemetrics: { name: "Alpine Télémetrics", price: 204, code: 'telemetrics' },
+
             },
             comfort: {
                 title: "Confort",

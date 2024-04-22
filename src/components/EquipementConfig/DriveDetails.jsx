@@ -4,7 +4,7 @@ import './DriveDetails.css'
 import { changeSelectedAssist, changeMuffler } from '../../features/selection/selectionSlice';
 
 
-function DriveDetails({ options, setShowDriveDetails, image }) {
+function DriveDetails({ options, setShowDriveDetails }) {
   const dispatch = useDispatch()
 
   function handleAssistChange(name, price, code) {
@@ -54,7 +54,7 @@ function DriveDetails({ options, setShowDriveDetails, image }) {
           <div>
             <input type="checkbox" name="muffler" id={options.equipements.drive.muffler.code} className="hidden" />
             <label htmlFor={options.equipements.drive.muffler.code} className='flex justify-between gap-2 w-3/5 px-4 py-2' onClick={() => handleMuffler(options.equipements.drive.muffler.name, options.equipements.drive.muffler.price)}>
-              <img src={imageManager?.muffler} alt="echappement" className='w-16' />
+              <img src={imageManager?.navigation} alt="echappement" className='w-16' />
               <span>{options.equipements.drive.muffler.name}</span>
               <span>{options.equipements.drive.muffler.price} € </span>
             </label>

@@ -9,9 +9,10 @@ const initialState = {
     seddlery: { name: 'Sièges baquets en cuir noir et Dinamica', price: 0 },
     equipements: {
         design: [],
-        mediaAndNavigation: [
-            { name: 'système Audio standard', price: 0 },
-        ],
+        mediaAndNavigation: {
+            audio: { name: 'système Audio standard', price: 0 },
+            telemetrics: null
+        },
         confort: [
             { name: 'Retroviseur intérieur électrochrome', price: 0 },
             { name: 'Régulateur / limiteur de vitesse', price: 0 },
@@ -41,16 +42,35 @@ export const selectionSlice = createSlice({
     name: 'selection',
     initialState,
     reducers: {
+        changeSelectedAudio: (state, action) => {
+            state.equipements.mediaAndNavigation.audio &&
+                (state.price -= state.equipements.mediaAndNavigation.audio.price)
+
+            state.equipements.mediaAndNavigation.audio = { name: action.payload.audioName, price: action.payload.audioPrice, code: action.payload.audioCode }
+
+            state.price += action.payload.audioPrice
+
+        },
+        changeTelemetrics: (state, action) => {
+            if (state.equipements.mediaAndNavigation.telemetrics === null) {
+
+                state.equipements.mediaAndNavigation.telemetrics = { name: action.payload.telemetricsName, price: action.payload.telemetricsPrice }
+                state.price += action.payload.telemetricsPrice
+            } else {
+                (state.price -= state.equipements.mediaAndNavigation.telemetrics.price)
+                state.equipements.mediaAndNavigation.telemetrics = null
+            }
+        },
 
         changeDesignOptions: (state, action) => {
 
             const currentOptions = state.equipements.design.find(option => option.code === action.payload.designCode)
 
-            if(currentOptions){
+            if (currentOptions) {
                 const filteredArray = state.equipements.design.filter(option => option.code !== action.payload.designCode)
                 state.equipements.design = filteredArray
                 state.price -= action.payload.designPrice
-            } else{
+            } else {
                 state.equipements.design.push({ name: action.payload.designName, price: action.payload.designPrice, code: action.payload.designCode })
                 state.price += action.payload.designPrice
             }
@@ -60,15 +80,16 @@ export const selectionSlice = createSlice({
 
             const currentOptions = state.equipements.confort.find(option => option.code === action.payload.comfortCode)
             if (currentOptions) {
-                const filteredArray =state.equipements.confort.filter(option => option.code !== action.payload.comfortCode)
+                const filteredArray = state.equipements.confort.filter(option => option.code !== action.payload.comfortCode)
                 state.equipements.confort = filteredArray
-                state.price -=action.payload.comfortPrice
+                state.price -= action.payload.comfortPrice
             } else {
                 state.equipements.confort.push({ name: action.payload.comfortName, price: action.payload.comfortPrice, code: action.payload.comfortCode })
                 state.price += action.payload.comfortPrice
             }
 
         },
+
         changeSelectedAssist: (state, action) => {
             state.equipements.drive.park &&
                 (state.price -= state.equipements.drive.park.price)
@@ -78,15 +99,16 @@ export const selectionSlice = createSlice({
             state.price += action.payload.assistPrice
 
         },
-        changeMuffler: (state, action) => {
-            if(state.equipements.drive.muffler === null ){
 
-            state.equipements.drive.muffler = { name: action.payload.mufflerName, price: action.payload.mufflerPrice }
-    
-            state.price += action.payload.mufflerPrice 
+        changeMuffler: (state, action) => {
+            if (state.equipements.drive.muffler === null) {
+
+                state.equipements.drive.muffler = { name: action.payload.mufflerName, price: action.payload.mufflerPrice }
+
+                state.price += action.payload.mufflerPrice
             } else {
                 (state.price -= state.equipements.drive.muffler.price)
-                state.equipements.drive.muffler =null
+                state.equipements.drive.muffler = null
             }
         },
 
@@ -111,6 +133,7 @@ export const selectionSlice = createSlice({
 
             state.price += action.payload.rimPrice
         },
+
         changeSelectedPaint: (state, action) => {
             state.price -= state.color.price  //retour au prix d'avant choix option
 
@@ -134,6 +157,6 @@ export const selectionSlice = createSlice({
 })
 
 
-export const {changeDesignOptions, changeComfortOPtions, changeMuffler, changeSelectedSeddlery, changedSelectedRim, changeSelectedPaint, changeVersion, changeSelectedAssist } = selectionSlice.actions
+export const { changeSelectedAudio, changeTelemetrics, changeDesignOptions, changeComfortOPtions, changeMuffler, changeSelectedSeddlery, changedSelectedRim, changeSelectedPaint, changeVersion, changeSelectedAssist } = selectionSlice.actions
 
 export default selectionSlice.reducer;

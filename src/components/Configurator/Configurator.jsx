@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeSelectedPaint, changedSelectedRim, changeSelectedSeddlery } from "../../features/selection/selectionSlice";
-import SeddleryView from "../SeddleryView/SeddleryView";
 import ConfigBottomBar from "../configBottomBar/configBottomBar";
 import PaintConfig from "../PaintConfig/PaintConfig";
 import RimConfig from "../RimConfig/RimConfig";

@@ -6,9 +6,6 @@ import { changeComfortOPtions } from '../../features/selection/selectionSlice';
 function ComfortDetails({options, setShowComfortDetails}) {
 
 
-  const test = useSelector((store) => store.selection.equipements.confort)
-  const currentOptions = test.find(option => option.code === 1)
-console.log(test);
 //changeComfortOPtions
   const dispatch = useDispatch()
 
