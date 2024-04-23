@@ -18,9 +18,9 @@ function SeddleryView({ seddleryImageSrc }) {
 
     return (
         <>
-            <button onClick={handleCarousselClickLeft}><FaChevronLeft /></button>
+            <button onClick={handleCarousselClickLeft}><FaChevronLeft style={{ fontSize: '2rem' }} /></button>
             <img src={seddleryImageSrc[changeSource]} alt="vue sellerie" className='h-3/4' />
-            <button onClick={handleCarousselClickRight}><FaChevronRight /></button>
+            <button onClick={handleCarousselClickRight}><FaChevronRight style={{ fontSize: '2rem' }} /></button>
         </>
     )
 }

@@ -4,9 +4,10 @@ import Configurator from '../Configurator/Configurator';
 import pure from '../../assets/images/car_selection/pure.png'
 import legende from '../../assets/images/car_selection/legende.png'
 import { changeVersion } from "../../features/selection/selectionSlice";
+import { IoMdClose } from "react-icons/io";
 
 
-function Selector() {
+function Selector({openSelector}) {
     //useSelector pour avoir les infos des voitures venant de configuratorSlice
     const cars = useSelector((store) => store.options.version);
 
@@ -35,7 +36,8 @@ function Selector() {
 
 
     return (
-        <div className='h-screen'>
+        <div className='h-screen z-10'>
+            <button onClick={() => openSelector(false)} className='z-20 size-8 absolute top-4 right-4 text-2xl bg-slate-100 rounded-full text-slate-900 border border-slate-900'> <IoMdClose style={{transform:'translateX(3px)'}}/></button>
             {selectorShown ? (
                 <div className='flex  justify-center items-center'>
                     {cars.map(car => (
