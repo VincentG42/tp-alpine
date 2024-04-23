@@ -65,7 +65,7 @@ function Configurator() {
     const seddleryOptions = selectedCarAndOptions.version === 'pure' ? options.seddlery.pure : options.seddlery.legend
 
     //setters vue sellerie
-    const [seddleryImageSrc, setSeddleryImageSrc] = useState(imageManager.seddlery[0][0]);
+    const [seddleryImageSrc, setSeddleryImageSrc] = useState(imageManager.seddlery[0]);
     function changeSeddlery(name, price, code) {
         dispatch(changeSelectedSeddlery({
             seddleryName: name,

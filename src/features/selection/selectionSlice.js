@@ -57,6 +57,7 @@ export const selectionSlice = createSlice({
                 state.price += action.payload.persoIntPrice
             }
 
+            
         },
 
         changeLogo: (state, action) => {

@@ -13,7 +13,7 @@ function NextButton() {
 
 
     return (
-        <div onClick={ handleCurrentOption} className='cursor-pointer'>NextButton</div>
+        <div onClick={ handleCurrentOption} className='cursor-pointer font-bold text-xl'>Etape Suivante</div>
     )
 }
 
