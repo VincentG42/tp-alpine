@@ -1,0 +1,18 @@
+.models-1>div{
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.models-1>div:last-child{
+    background-position: top;
+}
+
+
+.models-2>div{
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
