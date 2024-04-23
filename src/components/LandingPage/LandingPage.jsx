@@ -10,8 +10,7 @@ function LandingPage({ openSelector }) {
         <ParallaxProvider>
             <Header />
             <Hero />
-            <Models />
-            <button onClick={() => openSelector(true)} className='text-2xl bg-red-800 p-4'>Open Selector</button>
+            <Models openSelector={openSelector}/>
         </ParallaxProvider>
     )
 }
