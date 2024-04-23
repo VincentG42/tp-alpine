@@ -36,12 +36,12 @@ const initialState = {
         seddlery: {
             title: 'Sellerie',
             pure: [
-                { name: 'Sièges baquets en cuir noir et Dinamica', price: 0, code: 0 },
-                { name: 'Sièges Confort en cuir noir perforé', price: 800, code: 1 },
+                { name: 'Sièges baquets en cuir noir et Dinamica', price: 0, code: 0, id: 'dinamica' },
+                { name: 'Sièges Confort en cuir noir perforé', price: 800, code: 1, id:'perforated' },
             ],
             legend: [
-                { name: 'Sièges Confort en cuir noir', price: 0, code: 0 },
-                { name: 'Sièges Confort en cuir brun', price: 800, code: 1 }
+                { name: 'Sièges Confort en cuir noir', price: 0, code: 0, id: 'black' },
+                { name: 'Sièges Confort en cuir brun', price: 800, code: 1, id:'brown' }
             ],
         },
 

@@ -1,18 +1,17 @@
 import React from 'react'
 
 function SeddleryItemsSelector({ seddlerySelectionImages, seddleryOptions, changeSeddlery }) {
+
+    console.log(seddlerySelectionImages);
     return (
         <>
-            <div className='flex justify-center gap-4 text-center'>
-                {seddlerySelectionImages.map(seddlery => (
-                    <img key={seddlery.name} src={seddlery.image} alt="icone choix couleur" className=" w-1/3 hover:scale-110" />
-                ))}
-            </div>
+            
 
-            <div className="flex justify-center text-center">
+            <div className="flex justify-around text-center">
                 {seddleryOptions.map(seddlery => (
-                    <div key={seddlery.name} className="px-8">
-                        <p className="underline hover:cursor-pointer" onClick={() => changeSeddlery(seddlery.name, seddlery.price, seddlery.code)}>{seddlery.name}</p>
+                    <div key={seddlery.name} onClick={() => changeSeddlery(seddlery.name, seddlery.price, seddlery.code)} className='hover:cursor-pointer w-1/3'>
+                        <img src={seddlerySelectionImages[seddlery.id].image} alt="" />
+                        <p className="underline" >{seddlery.name}</p>
                         <p>{seddlery.price} €</p>
                     </div>
                 ))}

@@ -157,14 +157,16 @@ const initialState = {
 
     },
     seddlerySelection: {
-        pure: [
-            { name: "dinamica", image: selectDinamicaSeddlery, code: "dinamica" },
-            { name: "perforated", image: selectPerforatedSeddlery, code: "perforated" },
-        ],
-        legend: [
-            { name: "black", image: selectBlackSeddlery, code: "black" },
-            { name: "brown", image: selectBrownSeddlery, code: "brown" },
-        ]
+        pure: {
+            dinamica : { name: "dinamica", image: selectDinamicaSeddlery, code: "dinamica" },
+            perforated: { name: "perforated", image: selectPerforatedSeddlery, code: "perforated" },
+        },
+        legend: {
+                black:  { name: "black", image: selectBlackSeddlery, code: "black" },
+                brown: { name: "brown", image: selectBrownSeddlery, code: "brown" },
+
+        }
+        
     },
 
     equipementsCategories: [

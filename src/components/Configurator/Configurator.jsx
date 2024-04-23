@@ -72,7 +72,7 @@ function Configurator() {
             seddleryPrice: price,
             seddleryCode: code
         }))
-        code === 0 ? setSeddleryImageSrc(imageManager.seddlery[0][0]) : setSeddleryImageSrc(imageManager.seddlery[1][0])
+        code === 0 ? setSeddleryImageSrc(imageManager.seddlery[0]) : setSeddleryImageSrc(imageManager.seddlery[1])
 
 
     }

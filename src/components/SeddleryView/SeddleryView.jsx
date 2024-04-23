@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+
 
 function SeddleryView({ seddleryImageSrc }) {
 
-    
+    const [changeSource, setChangeSource] = useState(0);
+
+    function handleCarousselClickRight() {
+        setChangeSource(changeSource === seddleryImageSrc.length - 1 ? 0 : changeSource + 1)
+    }
+
+    function handleCarousselClickLeft() {
+        setChangeSource(changeSource === 0 ? seddleryImageSrc.length - 1 : changeSource - 1)
+    }
+
+
     return (
         <>
-            <img src={seddleryImageSrc[0]} alt="vue sellerie" className='h-3/4'/></>
+            <button onClick={handleCarousselClickLeft}><FaChevronLeft /></button>
+            <img src={seddleryImageSrc[changeSource]} alt="vue sellerie" className='h-3/4' />
+            <button onClick={handleCarousselClickRight}><FaChevronRight /></button>
+        </>
     )
 }
 
