@@ -8,6 +8,9 @@ module.exports = {
       scale: {
         '250': '2.5',
       },
+      aspectRatio: {
+        '16/9': '16/9',
+      },
     },
     plugins: [],
   }

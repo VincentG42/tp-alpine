@@ -2,7 +2,6 @@ import React from 'react'
 
 function SeddleryItemsSelector({ seddlerySelectionImages, seddleryOptions, changeSeddlery }) {
 
-    console.log(seddlerySelectionImages);
     return (
         <>
             

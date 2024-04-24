@@ -27,9 +27,9 @@ const initialState = {
                 { name: 'Serac', price: 1000, code: 1 },
             ],
             legend: [
-                { name: 'Standard', price: 0, code: 0 },
+                { name: 'Standard', price: 0, code: 2 },
                 { name: 'Serac', price: 1000, code: 1 },
-                { name: 'Légende', price: 0, code: 2 },
+                { name: 'Légende', price: 0, code: 0 },
             ],
         },
 
@@ -101,48 +101,48 @@ const initialState = {
                 ],
             }
         },
-        accessoires: {
-            transportEtProtection: {
-                title: "Transport et protection",
-                declinaison: [
-                    { name: 'Extincteur 1kg avec manomètre', price: 22 },
-                    { name: 'Chaine à neige Premium Grip', price: 336 },
-                    { name: 'Alarme', price: 543 },
-                    { name: 'Protection Prise OBD', price: 99 },
-                    { name: 'Kit de sécurité', price: 20 },
-                    { name: 'Fixation extincteur', price: 72 },
-                ],
-            },
-            mmultimedia: {
-                title: "Multimedia",
-                declinaison: [
-                    { name: "Support caméra sport", price: 89 },
-                    { name: "Support smartphone magnétique - Fixation sur tableau de bord", price: 21 },
-                ],
-            },
-            interieur: {
-                title: "Intérieur", declinaison: [
-                    { name: "Tapis de coffre", price: 83 },
-                    { name: "Filet de rangement - Horizontal", price: 59 },
-                ]
-            },
-            materielDeGarage: {
-                title: "Matériel de garage", declinaison: [
-                    { name: "Chergeur de batterie", price: 240 },
-                    { name: "Kit Outils Alpine", price: 398 },
-                ]
-            },
-            exterieur: {
-                title: "Extérieur", declinaison: [
-                    { name: "Cabochons Alpine - Métalisés", price: 24 },
-                    { name: "Housse de protection Alpine", price: 216 },
-                    { name: "Antivols pour jante - Noirs", price: 51 },
-                ]
-            },
-        }
+        // accessoires: {
+        //     transportEtProtection: {
+        //         title: "Transport et protection",
+        //         declinaison: [
+        //             { name: 'Extincteur 1kg avec manomètre', price: 22 },
+        //             { name: 'Chaine à neige Premium Grip', price: 336 },
+        //             { name: 'Alarme', price: 543 },
+        //             { name: 'Protection Prise OBD', price: 99 },
+        //             { name: 'Kit de sécurité', price: 20 },
+        //             { name: 'Fixation extincteur', price: 72 },
+        //         ],
+        //     },
+        //     mmultimedia: {
+        //         title: "Multimedia",
+        //         declinaison: [
+        //             { name: "Support caméra sport", price: 89 },
+        //             { name: "Support smartphone magnétique - Fixation sur tableau de bord", price: 21 },
+        //         ],
+        //     },
+        //     interieur: {
+        //         title: "Intérieur", declinaison: [
+        //             { name: "Tapis de coffre", price: 83 },
+        //             { name: "Filet de rangement - Horizontal", price: 59 },
+        //         ]
+        //     },
+        //     materielDeGarage: {
+        //         title: "Matériel de garage", declinaison: [
+        //             { name: "Chergeur de batterie", price: 240 },
+        //             { name: "Kit Outils Alpine", price: 398 },
+        //         ]
+        //     },
+        //     exterieur: {
+        //         title: "Extérieur", declinaison: [
+        //             { name: "Cabochons Alpine - Métalisés", price: 24 },
+        //             { name: "Housse de protection Alpine", price: 216 },
+        //             { name: "Antivols pour jante - Noirs", price: 51 },
+        //         ]
+        //     },
+        // }
     },
     currentOption: 0,
-    totalCategories: 5
+    totalCategories: 4
 }
 
 
@@ -154,11 +154,14 @@ export const optionsSlice = createSlice({
             state.currentOption < 5 &&
                 (state.currentOption += 1)
 
+        },
+        resetCurrentOption:(state) =>{
+            state.currentOption = 0
         }
     }
 })
 
-export const { changeCurrentOption } = optionsSlice.actions
+export const { changeCurrentOption, resetCurrentOption } = optionsSlice.actions
 
 
 

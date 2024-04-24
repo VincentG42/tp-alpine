@@ -9,11 +9,11 @@ function RimConfig({ options, rimsSelectionImage, rimOptions, changeRim, rimImag
                 <p className="text-3xl font-bold">{options.rims.title}</p>
             </div>
 
-            <div className="flex justify-around items-center h-5/6">
+            <div className="flex  flex-col-reverse lg:flex-row lg:justify-around  justify-center items-center h-5/6">
 
                 <RimItemsSelector rimsSelectionImage={rimsSelectionImage} rimOptions={rimOptions} changeRim={changeRim} />
 
-                <div className="w-2/3 flex justify-end items-start">
+                <div className="lg:w-2/3 flex lg:justify-end lg:items-start">
                     <ViewRim rimImageSrc={rimImageSrc} />
                 </div>
             </div></>

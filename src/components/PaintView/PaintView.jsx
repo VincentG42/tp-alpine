@@ -15,7 +15,7 @@ function handleCarousselClickLeft() {
 }
 
   return (
-    <div className='flex flex-col justify-center items-center w-1/2'>
+    <div className='flex flex-col justify-center items-center lg:w-1/2'>
     
         <img src={carousselImages[changeSource]} alt="visuel voiture" />
       <div className='flex gap-4 -translate-y-16'>

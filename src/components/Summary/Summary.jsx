@@ -1,27 +1,36 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { resetOptions } from '../../features/selection/selectionSlice'
+import { resetCurrentOption } from '../../features/options/optionsSlice'
 
-function Summary() {
+function Summary({setSelectorShown}) {
+
+    const dispatch = useDispatch()
 
 
     const chosenCarAndOptions = useSelector(store => store.selection)
 
-    console.log(
-        chosenCarAndOptions
-    );
+    function handleReset() {
+        dispatch(resetOptions())
+        console.log('hello')
+        dispatch(resetCurrentOption())
+        setSelectorShown(false)
+        
+    }
+
     return (
-        <div className='flex flex-col space-between h-full w-full p-24 bg-slate-50'>
+        <div className='flex flex-col w-full pt-16 bg-slate-50'>
             <h4 className='w-full bg-slate-900 text-slate-100 text-center text-3xl font-bold py-4'>Votre configuration</h4>
-            <div className='flex justify-around'>
+            <div className='flex flex-col md:flex-row justify-around px-4'>
                 <h3 className='text-2xl font-bold py-4'> Alpine A110 "{chosenCarAndOptions.version}" Edition</h3>
                 <p className='text-2xl font-bold py-4'>Prix : {chosenCarAndOptions.price} €</p>
 
             </div>
 
 
-            <div className='flex overflow-y-auto'>
+            <div className='flex overflow-y-auto flex-col lg:flex-row px-4 gap-8'>
 
-                <div className='flex flex-col gap-2 w-1/2 overflow-y-auto'>
+                <div className='flex flex-col gap-4 lg:w-1/2 overflow-y-auto'>
                     <h3 className='text-2xl font-semibold underline'>Rappel des options choisies:</h3>
                     <div className='flex w-full justify-between border-b border-slate-900 px-2'>
                         <h5 className='text-slate-900'>Couleur: {chosenCarAndOptions.color.name}</h5>
@@ -45,7 +54,7 @@ function Summary() {
                                 <div className='flex w-full flex-col justify-start pl-2'>
                                     <h6>Design:</h6>
 
-                                    {chosenCarAndOptions.equipements.design.map(design => <div className='flex w-full justify-between pl-2 bg-slate-200'> <span>{design.name}</span> <span> {design.price} €</span></div>)}
+                                    {chosenCarAndOptions.equipements.design.map(design => <div  key={design.name} className='flex w-full justify-between px-2 bg-slate-200'> <span>{design.name}</span> <span> {design.price} €</span></div>)}
 
                                 </div>
                             }
@@ -61,9 +70,9 @@ function Summary() {
                             </div>
                         }
 
-                        <div className='flex w-full flex-col justify-start px-2'>
+                        <div className='flex w-full flex-col justify-start pl-2'>
                             <h6>Confort:</h6>
-                            {chosenCarAndOptions.equipements.confort.map(confort => <div className='flex w-full justify-between pl-2 bg-slate-200'> <span>{confort.name}</span> <span> {confort.price === 0 ? 'inclus' : `${confort.price} €`} </span></div>)}
+                            {chosenCarAndOptions.equipements.confort.map(confort => <div key={confort.name} className='flex w-full justify-between px-2 bg-slate-200'> <span>{confort.name}</span> <span> {confort.price === 0 ? 'inclus' : `${confort.price} €`} </span></div>)}
                         </div>
 
                         <div className='flex w-full flex-col justify-start pl-2'>
@@ -90,7 +99,7 @@ function Summary() {
 
                         <div className='flex w-full flex-col justify-start pl-2'>
                             <h6>Personnalisation intérieure:</h6>
-                            {chosenCarAndOptions.equipements.persoInterieur.map(perso => <div className='flex w-full justify-between pl-2 bg-slate-200'>
+                            {chosenCarAndOptions.equipements.persoInterieur.map(perso => <div key={perso.name} className='flex w-full justify-between px-2 bg-slate-200'>
                                 <span>{perso.name} </span>  <span> {perso.price === 0 ? 'inclus' : `${perso.price} €`} </span>
                             </div>)}
                         </div>
@@ -98,9 +107,11 @@ function Summary() {
 
                 </div>
 
-                <div className='flex flex-col justify-center items-center h-full w-1/2 p-24 bg-slate-50 gap-8'>
-                    <button className='bg-slate-900 text-slate-100 font-bold w-32 h-12 hover:scale-105'>Acheter</button>
-                    <button className='bg-slate-900 text-slate-100 font-bold w-32 h-12 hover:scale-105'>Recommencer</button>
+                <div className='flex lg:flex-col justify-center items-center lg:w-1/2  bg-slate-100 gap-8'>
+                <button  className='relative px-5 py-2.5 overflow-hidden group bg-slate-900 relative hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-600 text-white hover:ring-2 hover:ring-offset-2 hover:ring-slate-900 transition-all ease-out duration-300'>
+                                <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span><span className="relative">Commander</span></button>
+                                <button onClick={handleReset} className='relative px-5 py-2.5 overflow-hidden group bg-slate-900 relative hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-600 text-white hover:ring-2 hover:ring-offset-2 hover:ring-slate-900 transition-all ease-out duration-300'>
+                                <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span><span className="relative">Recommander</span></button>
                 </div>
             </div>
         </div>

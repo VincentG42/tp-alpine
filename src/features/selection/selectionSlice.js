@@ -30,14 +30,14 @@ const initialState = {
             { name: 'Harmonie carbone mat', price: 0 },
         ]
     },
-    accessoires: {
-        transportEtProtection: [],
-        mmultimedia: [],
-        interieur: [],
-        materielDeGarage: [],
-        exterieur: [],
-    }
-}
+//     accessoires: {
+//         transportEtProtection: [],
+//         mmultimedia: [],
+//         interieur: [],
+//         materielDeGarage: [],
+//         exterieur: [],
+//     }
+ }
 
 
 export const selectionSlice = createSlice({
@@ -190,11 +190,14 @@ export const selectionSlice = createSlice({
             state.price = 58500;
             state.seddlery = { name: 'Sièges Confort en cuir noir', price: 0 };
 
-        }
+        },
+        resetOptions:()  =>{
+            return initialState
+        } 
     }
 })
 
 
-export const {changePersoIntOPtions, changeLogo, changeSelectedCaliper, changeSelectedAudio, changeTelemetrics, changeDesignOptions, changeComfortOPtions, changeMuffler, changeSelectedSeddlery, changedSelectedRim, changeSelectedPaint, changeVersion, changeSelectedAssist } = selectionSlice.actions
+export const {resetOptions, changePersoIntOPtions, changeLogo, changeSelectedCaliper, changeSelectedAudio, changeTelemetrics, changeDesignOptions, changeComfortOPtions, changeMuffler, changeSelectedSeddlery, changedSelectedRim, changeSelectedPaint, changeVersion, changeSelectedAssist } = selectionSlice.actions
 
 export default selectionSlice.reducer;

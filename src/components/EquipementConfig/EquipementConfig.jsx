@@ -30,34 +30,34 @@ function EquipementConfig({ options, selectedCarAndOptions }) {
                         {showPersoExtDetails && <PersoExtDetails options={options} setShowPersoExtDetails={setShowPersoExtDetails}/>}
                         {showPersoIntDetails && <PersoIntDetails options={options} setShowPersoIntDetails={setShowPersoIntDetails}/>}
             
-            <div className="flex justify-center items-center max-h-5/6 w-full flex-wrap gap-8 mt-12">
+            <div className="flex justify-center items-center w-full flex-wrap lg:gap-8 md:gap-4 gap-2 py-24 px-4 md:px-0">
                 
-                    <div className="w-1/4 flex flex-col justify-start items-center border border-slate-900 relative hover:scale-105 hover:shadow-lg cursor-pointer" onClick={() => setShowDriveDetails(true)}>
+                    <div className="lg:w-1/4 md:w-1/3 flex flex-col justify-start items-center border border-slate-900 relative hover:scale-105 hover:shadow-lg cursor-pointer" onClick={() => setShowDriveDetails(true)}>
                         <p className='absolute top-4 w-full bg-slate-50 text-center'>{equipementsCategories[0].name}</p>
                         <img src={equipementsCategories[0].image} alt={`categories d'équipemens  ${equipementsCategories[0].name}`} />
                     </div>
 
-                    <div className="w-1/4 flex flex-col justify-start items-center border border-slate-900 relative hover:scale-105 hover:shadow-lg cursor-pointer" onClick={() => setShowComfortDetails(true)}>
+                    <div className="lg:w-1/4 md:w-1/3 flex flex-col justify-start items-center border border-slate-900 relative hover:scale-105 hover:shadow-lg cursor-pointer" onClick={() => setShowComfortDetails(true)}>
                         <p className='absolute top-4 w-full bg-slate-50 text-center'>{equipementsCategories[1].name}</p>
                         <img src={equipementsCategories[1].image} alt={`categories d'équipemens  ${equipementsCategories[1].name}`} />
                     </div>
 
-                    <div className="w-1/4 flex flex-col justify-start items-center border border-slate-900 relative hover:scale-105 hover:shadow-lg cursor-pointer" onClick={() => setShowDesignDetails(true)}>
+                    <div className="lg:w-1/4 md:w-1/3 flex flex-col justify-start items-center border border-slate-900 relative hover:scale-105 hover:shadow-lg cursor-pointer" onClick={() => setShowDesignDetails(true)}>
                         <p className='absolute top-4 w-full bg-slate-50 text-center'>{equipementsCategories[2].name}</p>
                         <img src={equipementsCategories[2].image} alt={`categories d'équipemens  ${equipementsCategories[2].name}`} />
                     </div>
 
-                    <div className="w-1/4 flex flex-col justify-start items-center border border-slate-900 relative hover:scale-105 hover:shadow-lg cursor-pointer" onClick={() => setShowMediaDetails(true)}>
+                    <div className="lg:w-1/4 md:w-1/3 flex flex-col justify-start items-center border border-slate-900 relative hover:scale-105 hover:shadow-lg cursor-pointer" onClick={() => setShowMediaDetails(true)}>
                         <p className='absolute top-4 w-full bg-slate-50 text-center'>{equipementsCategories[3].name}</p>
                         <img src={equipementsCategories[3].image} alt={`categories d'équipemens  ${equipementsCategories[3].name}`} />
                     </div>
                 
-                    <div className="w-1/4 flex flex-col justify-start items-center border border-slate-900 relative hover:scale-105 hover:shadow-lg cursor-pointer" onClick ={() => setShowPersoExtDetails(true)}>
+                    <div className="lg:w-1/4 md:w-1/3 flex flex-col justify-start items-center border border-slate-900 relative hover:scale-105 hover:shadow-lg cursor-pointer" onClick ={() => setShowPersoExtDetails(true)}>
                         <p className='absolute top-4 w-full bg-slate-50 text-center'>{equipementsCategories[4].name}</p>
                         <img src={equipementsCategories[4].image} alt={`categories d'équipemens  ${equipementsCategories[4].name}`} />
                     </div>
 
-                    <div className="w-1/4 flex flex-col justify-start items-center border border-slate-900 relative hover:scale-105 hover:shadow-lg cursor-pointer" onClick={() => setShowPersoIntDetails(true)}>
+                    <div className="lg:w-1/4 md:w-1/3 flex flex-col justify-start items-center border border-slate-900 relative hover:scale-105 hover:shadow-lg cursor-pointer" onClick={() => setShowPersoIntDetails(true)}>
                         <p className='absolute top-4 w-full bg-slate-50 text-center'>{equipementsCategories[5].name}</p>
                         <img src={equipementsCategories[5].image} alt={`categories d'équipemens  ${equipementsCategories[5].name}`} />
                     </div>

@@ -10,12 +10,12 @@ function SeddleryConfig({ options, seddlerySelectionImages, seddleryOptions, cha
                 <p className="text-3xl font-bold">{options.seddlery.title}</p>
             </div>
 
-            <div className="flex justify-around items-center h-5/6">
-                <div className="w-3/4 h-full flex justify-end items-center">
+            <div className="flex flex-col lg:flex-row lg:justify-around justify-center gap-8 lg:gap-0 py-24 items-center h-5/6">
+                <div className="lg:w-3/4  flex  justify-center items-center">
                     <SeddleryView seddleryImageSrc={seddleryImageSrc} />
                 </div>
 
-                <div className="flex flex-col justify-center gap-2 h-full w-1/2 pl-8">
+                <div className="flex flex-col justify-center gap-2  lg:w-1/2 lg:pl-8">
                     <SeddleryItemsSelector seddlerySelectionImages={seddlerySelectionImages} seddleryOptions={seddleryOptions} changeSeddlery={changeSeddlery} />
                 </div>
 

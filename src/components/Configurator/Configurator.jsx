@@ -11,7 +11,7 @@ import Summary from "../Summary/Summary";
 
 
 
-function Configurator() {
+function Configurator({setSelectorShown}) {
     const dispatch = useDispatch()
 
     //store.selection = slice de la configuration choisie
@@ -102,7 +102,7 @@ function Configurator() {
     return (
         <div className="flex flex-col">
             {/* bottom bar position fixed */}
-            <div className="w-full bg-slate-900 text-slate-100 flex justify-between items-center h-24 fixed bottom-0 z-50">
+            <div className="w-full bg-slate-900 text-slate-100 flex flex-col md:flex-row justify-between items-center gap-2 p-4 lg:h-24 fixed bottom-0 z-50">
                 <ConfigBottomBar selectedCarAndOptions={selectedCarAndOptions} />
             </div>
 
@@ -147,14 +147,12 @@ function Configurator() {
                     </div>
                 }
 
+
+
+
                 {currentOption === 4 &&
-                <div id="option-5" className="h-screen flex justify-center items-center">Coming Soon</div>}
-
-
-
-                {currentOption === 5 &&
                 <div id="summary" className="h-screen">
-                    <Summary />    
+                    <Summary setSelectorShown ={setSelectorShown} />    
                 </div>}
 
         </div>
