@@ -82,7 +82,7 @@ export const SendEmail = () => {
     };
 
     return (
-        <form ref={form} onSubmit={sendEmail}>
+        <form ref={form}  className='flex flex-col gap-4'>
             <label>Name</label>
             <input type="text" name="user_name" />
             <label>Email</label>
@@ -93,3 +93,6 @@ export const SendEmail = () => {
         </form>
     );
 };
+
+
+// onSubmit={sendEmail} à mettre dans al balsie form pourr e activer la fonction d'envoi de mail (config avec mailtrap) donc je l'ai desactivée pour eviter l'envoi de mail inutile une fois le projet deployé

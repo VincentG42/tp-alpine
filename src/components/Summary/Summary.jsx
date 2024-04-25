@@ -14,7 +14,6 @@ function Summary({setSelectorShown}) {
 
     function handleReset() {
         dispatch(resetOptions())
-        console.log('hello')
         dispatch(resetCurrentOption())
         setSelectorShown(false)
         
@@ -22,7 +21,7 @@ function Summary({setSelectorShown}) {
 
 
     return (
-        <div className='flex flex-col w-full pt-16 bg-slate-50'>
+        <div className='flex flex-col w-full pt-16 bg-slate-50 mb-4'>
             <h4 className='w-full bg-slate-900 text-slate-100 text-center text-3xl font-bold py-4'>Votre configuration</h4>
             <div className='flex flex-col md:flex-row justify-around px-4'>
                 <h3 className='text-2xl font-bold py-4'> Alpine A110 "{chosenCarAndOptions.version}" Edition</h3>
@@ -110,7 +109,7 @@ function Summary({setSelectorShown}) {
 
                 </div>
 
-                <div className='flex lg:flex-col justify-center items-center lg:w-1/2  bg-slate-100 gap-8'>
+                <div className='flex flex-col justify-center items-center lg:w-1/2  bg-slate-100 gap-8'>
                     <button onClick={handleReset} className='relative px-5 py-2.5 overflow-hidden group bg-slate-900 relative hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-600 text-white hover:ring-2 hover:ring-offset-2 hover:ring-slate-900 transition-all ease-out duration-300'>
                     <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span><span className="relative">Recommencer</span></button>
                                 <SendEmail />
