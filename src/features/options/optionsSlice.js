@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { toBePartiallyChecked } from "@testing-library/jest-dom/matchers";
 
 
 const initialState = {
@@ -27,9 +26,9 @@ const initialState = {
                 { name: 'Serac', price: 1000, code: 1 },
             ],
             legend: [
-                { name: 'Standard', price: 0, code: 2 },
+                { name: 'Standard', price: 0, code: 0 },
                 { name: 'Serac', price: 1000, code: 1 },
-                { name: 'Légende', price: 0, code: 0 },
+                { name: 'Légende', price: 0, code: 2},
             ],
         },
 

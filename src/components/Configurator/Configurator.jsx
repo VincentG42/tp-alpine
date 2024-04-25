@@ -1,4 +1,4 @@
-import { Children, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeSelectedPaint, changedSelectedRim, changeSelectedSeddlery } from "../../features/selection/selectionSlice";
 import ConfigBottomBar from "../configBottomBar/configBottomBar";
@@ -100,15 +100,12 @@ function Configurator({setSelectorShown}) {
 
 
     return (
-        <div className="flex flex-col">
-            {/* bottom bar position fixed */}
-            <div className="w-full bg-slate-900 text-slate-100 flex flex-col md:flex-row justify-between items-center gap-2 p-4 lg:h-24 fixed bottom-0 z-50">
-                <ConfigBottomBar selectedCarAndOptions={selectedCarAndOptions} />
-            </div>
+        <div className="flex flex-col justify-between h-screen">
+            {/* bottom bar */}
 
                 {/* couleur config */}
                 {currentOption === 0 &&
-                    <div id="option-1" className="h-screen">
+                    <div id="option-1" >
                         <PaintConfig options={options}
                             carousselImages={carousselImages}
                             colorsImages={colorsImages}
@@ -119,7 +116,7 @@ function Configurator({setSelectorShown}) {
                 {/* jantes config */}
                 {currentOption === 1 &&
 
-                    <div id="option-2" className="h-screen">
+                    <div id="option-2">
                         <RimConfig options={options}
                             selectedCarAndOptions={selectedCarAndOptions}
                             rimsSelectionImage={rimsSelectionImage}
@@ -131,7 +128,7 @@ function Configurator({setSelectorShown}) {
                 {/* sellerie config */}
                 {currentOption === 2 &&
 
-                    <div id="option-3" className="h-screen">
+                    <div id="option-3">
                         <SeddleryConfig options={options}
                             seddlerySelectionImages={seddlerySelectionImages}
                             seddleryOptions={seddleryOptions}
@@ -142,7 +139,7 @@ function Configurator({setSelectorShown}) {
                 {/* equipements config */}
                 {currentOption === 3 &&
 
-                    <div id="option-4" className="h-screen">
+                    <div id="option-4">
                         <EquipementConfig options={options} selectedCarAndOptions={selectedCarAndOptions} />
                     </div>
                 }
@@ -151,9 +148,14 @@ function Configurator({setSelectorShown}) {
 
 
                 {currentOption === 4 &&
-                <div id="summary" className="h-screen">
+                <div id="summary">
                     <Summary setSelectorShown ={setSelectorShown} />    
                 </div>}
+
+                <div className="w-full bg-slate-900 text-slate-100 flex flex-col md:flex-row justify-between items-center gap-2 p-4 lg:h-24 ">
+                <ConfigBottomBar selectedCarAndOptions={selectedCarAndOptions} />
+            </div>
+
 
         </div>
     );

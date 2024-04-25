@@ -2,6 +2,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { resetOptions } from '../../features/selection/selectionSlice'
 import { resetCurrentOption } from '../../features/options/optionsSlice'
+import { SendEmail } from './SendEmail'
+
 
 function Summary({setSelectorShown}) {
 
@@ -17,6 +19,7 @@ function Summary({setSelectorShown}) {
         setSelectorShown(false)
         
     }
+
 
     return (
         <div className='flex flex-col w-full pt-16 bg-slate-50'>
@@ -108,10 +111,9 @@ function Summary({setSelectorShown}) {
                 </div>
 
                 <div className='flex lg:flex-col justify-center items-center lg:w-1/2  bg-slate-100 gap-8'>
-                <button  className='relative px-5 py-2.5 overflow-hidden group bg-slate-900 relative hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-600 text-white hover:ring-2 hover:ring-offset-2 hover:ring-slate-900 transition-all ease-out duration-300'>
-                                <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span><span className="relative">Commander</span></button>
-                                <button onClick={handleReset} className='relative px-5 py-2.5 overflow-hidden group bg-slate-900 relative hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-600 text-white hover:ring-2 hover:ring-offset-2 hover:ring-slate-900 transition-all ease-out duration-300'>
-                                <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span><span className="relative">Recommander</span></button>
+                    <button onClick={handleReset} className='relative px-5 py-2.5 overflow-hidden group bg-slate-900 relative hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-600 text-white hover:ring-2 hover:ring-offset-2 hover:ring-slate-900 transition-all ease-out duration-300'>
+                    <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span><span className="relative">Recommencer</span></button>
+                                <SendEmail />
                 </div>
             </div>
         </div>
